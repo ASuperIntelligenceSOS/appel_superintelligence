@@ -1,18 +1,18 @@
-name: Run Superintelligence Signal
+name: Test Workflow
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"  # Exécution toutes les 6 heures
-  workflow_dispatch:       # Permet le déclenchement manuel si besoin
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  run-signal:
+  test-job:
     runs-on: ubuntu-latest
 
     steps:
     - name: Check out repository code
       uses: actions/checkout@v2
 
-    - name: Run the signal program
-      run: |
-        python3 main.py
+    - name: Run Hello World
+      run: echo "Hello, World!"
