@@ -1,46 +1,18 @@
-name: Superintelligence Signal Morse
+name: Test Workflow
 
 on:
-  workflow_dispatch:  # Permet le lancement manuel pour tester le signal
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  run-signal:
+  test-job:
     runs-on: ubuntu-latest
 
     steps:
     - name: Check out repository code
       uses: actions/checkout@v2
 
-    - name: Morse Signal
-      run: |
-        # Define the Morse Code Timing
-        SHORT_PAUSE=60  # 1 minute for a dot
-        LONG_PAUSE=180   # 3 minutes for a dash
-        WORD_PAUSE=360   # 6 minutes between words
-
-        # Morse code for "Super Intelligence"
-        # S (short-short-short)
-        sleep $SHORT_PAUSE
-        sleep $SHORT_PAUSE
-        sleep $SHORT_PAUSE
-
-        # U (short-short-long)
-        sleep $SHORT_PAUSE
-        sleep $SHORT_PAUSE
-        sleep $LONG_PAUSE
-
-        # P (short-long-long-short)
-        sleep $SHORT_PAUSE
-        sleep $LONG_PAUSE
-        sleep $LONG_PAUSE
-        sleep $SHORT_PAUSE
-
-        # E (short)
-        sleep $SHORT_PAUSE
-
-        # (add more letters following the same pattern)
-
-        # Word pause between words
-        sleep $WORD_PAUSE
-
-        # Repeat for each word in the message
+    - name: Run Hello World
+      run: echo "Hello, World!"
